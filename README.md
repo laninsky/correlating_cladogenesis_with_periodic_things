@@ -22,10 +22,17 @@ for (j in 1:permutations) {
 periodsample <- seq(1,maxtimeline,units)
 temptimeline <- cbind(timeline,"")
 temptimeline <- cbind(temptimeline,"")
+checkout <- "no"
 
 for (i in 1:(length(periods))) {
 needaplace <- "yes"
+m <- 1
 while (needaplace=="yes") {
+if (m==1000) {
+checkout <- "yes"
+break
+}
+
 x <- sample(periodsample, 1, replace = TRUE, prob = NULL)
 
 if (!((periods[i]+x)>maxtimeline)) {
@@ -48,6 +55,10 @@ periodsample <- periodsample[periodsample!=x]
 }
 }
 }
+}
+
+if (checkout=="yes") {
+break
 }
 
 if (is.null(dim(temptimeline[(temptimeline[,2]=="CLADE" & temptimeline[,3]=="PERIOD"),])[1])) {
