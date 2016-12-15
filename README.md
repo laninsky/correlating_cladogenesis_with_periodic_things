@@ -24,6 +24,7 @@ temptimeline <- cbind(timeline,"")
 temptimeline <- cbind(temptimeline,"")
 checkout <- "no"
 
+#Code review 15-Dec-2016: Not sure what the m=1000 if function will ever do, because I see no wway in the code I've incremented m to increase
 for (i in 1:(length(periods))) {
 needaplace <- "yes"
 m <- 1
